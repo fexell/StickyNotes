@@ -16,3 +16,8 @@ obj/
 Notes.Api/notes.db
 Notes.Api/notes.db-shm
 Notes.Api/notes.db-wal
+
+# appsettings.json files
+appsettings.json
+appsettings.*.local.json
+appsettings.Development.json
