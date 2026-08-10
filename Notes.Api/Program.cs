@@ -13,7 +13,8 @@ builder.Services
     .AddControllers()
     .AddNewtonsoftJson(options =>
     {
-        options.SerializerSettings.TypeNameHandling = TypeNameHandling.Auto;
+        // Auto till None
+        options.SerializerSettings.TypeNameHandling = TypeNameHandling.None;
         options.SerializerSettings.Converters.Add(new StringEnumConverter());
     });
 
