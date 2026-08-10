@@ -259,7 +259,9 @@ const notesList = document.getElementById('notesList');
 const noteListItem = note => {
     var content = document.createElement('div');
     content.setAttribute('class', 'note-content');
-    content.innerHTML = note.content;
+
+    // Var content.innerHTML innan
+    content.innerText = note.content;
 
     var button = document.createElement('button');
     button.setAttribute('type', 'button');
