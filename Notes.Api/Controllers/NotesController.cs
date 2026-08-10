@@ -78,6 +78,13 @@ public class NotesController : ControllerBase
             return NotFound($"Note with noteId {noteId} not found");
         }
 
+        var authorizationHeader = Request.Headers["Authorization"];
+        var user = BasicAuthenticationHandler.GetUserFrom(authorizationHeader);
+        if (note.Author != user.Username)
+        {
+            return Forbid();
+        }
+
         return Ok(note);
     }
 
@@ -95,6 +102,13 @@ public class NotesController : ControllerBase
         if (note == null)
         {
             return NotFound($"Note with noteId {noteId} not found");
+        }
+
+        var authorizationHeader = Request.Headers["Authorization"];
+        var user = BasicAuthenticationHandler.GetUserFrom(authorizationHeader);
+        if (note.Author != user.Username)
+        {
+            return Forbid();
         }
 
         note.Content = patchNote.Content;
@@ -116,6 +130,13 @@ public class NotesController : ControllerBase
         if (note == null)
         {
             return NotFound($"Note with noteId {noteId} not found");
+        }
+
+        var authorizationHeader = Request.Headers["Authorization"];
+        var user = BasicAuthenticationHandler.GetUserFrom(authorizationHeader);
+        if (note.Author != user.Username)
+        {
+            return Forbid();
         }
 
         _database.Notes.Remove(note);
